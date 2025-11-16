@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cashflow 101 - Versão Brasileira</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <!-- Header -->
+        <header class="game-header">
+            <h1>CASHFLOW 101</h1>
+            <p class="subtitle">O Jogo de Tabuleiro de Educação Financeira</p>
+        </header>
+
+        <!-- Main Game Area -->
+        <main class="game-main">
+            <!-- Game Board -->
+            <section class="game-board">
+                <div class="board-wrapper">
+                    <!-- Rat Race Track (Inner Circle) -->
+                    <div class="rat-race-track">
+                        <div class="track-center">
+                            <h2>Corrida dos Ratos</h2>
+                            <p>Escape e alcance a <br><strong>Pista Rápida</strong></p>
+                        </div>
+                        
+                        <!-- Board Spaces -->
+                        <div class="board-space space-start" data-space="0">
+                            <span>INÍCIO</span>
+                        </div>
+                        <div class="board-space space-opportunity" data-space="1">
+                            <span>Oportunidade</span>
+                        </div>
+                        <div class="board-space space-doodad" data-space="2">
+                            <span>Despesa Extra</span>
+                        </div>
+                        <div class="board-space space-opportunity" data-space="3">
+                            <span>Oportunidade</span>
+                        </div>
+                        <div class="board-space space-market" data-space="4">
+                            <span>Mercado</span>
+                        </div>
+                        <div class="board-space space-doodad" data-space="5">
+                            <span>Despesa Extra</span>
+                        </div>
+                        <div class="board-space space-opportunity" data-space="6">
+                            <span>Oportunidade</span>
+                        </div>
+                        <div class="board-space space-charity" data-space="7">
+                            <span>Caridade</span>
+                        </div>
+                        <div class="board-space space-opportunity" data-space="8">
+                            <span>Oportunidade</span>
+                        </div>
+                        <div class="board-space space-doodad" data-space="9">
+                            <span>Despesa Extra</span>
+                        </div>
+                        <div class="board-space space-opportunity" data-space="10">
+                            <span>Oportunidade</span>
+                        </div>
+                        <div class="board-space space-payday" data-space="11">
+                            <span>Dia de Pagamento</span>
+                        </div>
+                        <div class="board-space space-opportunity" data-space="12">
+                            <span>Oportunidade</span>
+                        </div>
+                        <div class="board-space space-doodad" data-space="13">
+                            <span>Despesa Extra</span>
+                        </div>
+                        <div class="board-space space-market" data-space="14">
+                            <span>Mercado</span>
+                        </div>
+                        <div class="board-space space-opportunity" data-space="15">
+                            <span>Oportunidade</span>
+                        </div>
+                        <div class="board-space space-doodad" data-space="16">
+                            <span>Despesa Extra</span>
+                        </div>
+                        <div class="board-space space-opportunity" data-space="17">
+                            <span>Oportunidade</span>
+                        </div>
+                        <div class="board-space space-child" data-space="18">
+                            <span>Criança</span>
+                        </div>
+                        <div class="board-space space-opportunity" data-space="19">
+                            <span>Oportunidade</span>
+                        </div>
+                        <div class="board-space space-doodad" data-space="20">
+                            <span>Despesa Extra</span>
+                        </div>
+                        <div class="board-space space-opportunity" data-space="21">
+                            <span>Oportunidade</span>
+                        </div>
+                        <div class="board-space space-downsized" data-space="22">
+                            <span>Demitido</span>
+                        </div>
+                        <div class="board-space space-opportunity" data-space="23">
+                            <span>Oportunidade</span>
+                        </div>
+                    </div>
+
+                    <!-- Fast Track (Outer Circle) -->
+                    <div class="fast-track">
+                        <div class="fast-track-label">Pista Rápida</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Side Panel -->
+            <aside class="game-panel">
+                <!-- Game Controls -->
+                <div class="controls-section">
+                    <h3>Controles</h3>
+                    <button id="startGame" class="btn btn-primary">Iniciar Jogo</button>
+                    <button id="rollDice" class="btn btn-secondary" disabled>Jogar Dados</button>
+                    <button id="endTurn" class="btn btn-secondary" disabled>Finalizar Turno</button>
+                    
+                    <div class="dice-result">
+                        <span id="diceValue">-</span>
+                    </div>
+                </div>
+
+                <!-- Current Player Info -->
+                <div class="player-info-section">
+                    <h3>Jogador Atual</h3>
+                    <div id="currentPlayer" class="player-display">
+                        <p class="player-name">Nenhum jogador</p>
+                        <p class="player-profession">Selecione uma profissão</p>
+                        <p class="player-position">Posição: -</p>
+                    </div>
+                </div>
+
+                <!-- Financial Statement -->
+                <div class="financial-statement">
+                    <h3>Demonstração Financeira</h3>
+                    
+                    <div class="statement-section">
+                        <h4>Demonstração de Resultado</h4>
+                        <div class="statement-row">
+                            <span>Receita:</span>
+                            <span id="income" class="value">R$ 0</span>
+                        </div>
+                        <div class="statement-row">
+                            <span>Despesas:</span>
+                            <span id="expenses" class="value">R$ 0</span>
+                        </div>
+                        <div class="statement-row highlight">
+                            <span>Fluxo de Caixa:</span>
+                            <span id="cashflow" class="value">R$ 0</span>
+                        </div>
+                    </div>
+
+                    <div class="statement-section">
+                        <h4>Balanço Patrimonial</h4>
+                        <div class="statement-row">
+                            <span>Dinheiro:</span>
+                            <span id="cash" class="value">R$ 0</span>
+                        </div>
+                        <div class="statement-row">
+                            <span>Ativos:</span>
+                            <span id="assets" class="value">R$ 0</span>
+                        </div>
+                        <div class="statement-row">
+                            <span>Passivos:</span>
+                            <span id="liabilities" class="value">R$ 0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Game Log -->
+                <div class="game-log">
+                    <h3>Registro do Jogo</h3>
+                    <div id="logContent" class="log-content">
+                        <p>Bem-vindo ao Cashflow 101!</p>
+                    </div>
+                </div>
+            </aside>
+        </main>
+
+        <!-- Modals -->
+        <!-- Profession Selection Modal -->
+        <div id="professionModal" class="modal">
+            <div class="modal-content">
+                <h2>Escolha sua Profissão</h2>
+                <div class="profession-grid">
+                    <button class="profession-btn" data-profession="engineer">
+                        <h4>Engenheiro</h4>
+                        <p>Salário: R$ 4.900</p>
+                    </button>
+                    <button class="profession-btn" data-profession="teacher">
+                        <h4>Professor</h4>
+                        <p>Salário: R$ 3.300</p>
+                    </button>
+                    <button class="profession-btn" data-profession="mechanic">
+                        <h4>Mecânico</h4>
+                        <p>Salário: R$ 2.000</p>
+                    </button>
+                    <button class="profession-btn" data-profession="nurse">
+                        <h4>Enfermeira</h4>
+                        <p>Salário: R$ 3.100</p>
+                    </button>
+                    <button class="profession-btn" data-profession="secretary">
+                        <h4>Secretária</h4>
+                        <p>Salário: R$ 2.500</p>
+                    </button>
+                    <button class="profession-btn" data-profession="manager">
+                        <h4>Gerente</h4>
+                        <p>Salário: R$ 4.600</p>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card Modal -->
+        <div id="cardModal" class="modal">
+            <div class="modal-content">
+                <h2 id="cardTitle">Carta</h2>
+                <div id="cardContent" class="card-content"></div>
+                <div class="card-actions">
+                    <button id="acceptCard" class="btn btn-primary">Aceitar</button>
+                    <button id="rejectCard" class="btn btn-secondary">Recusar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
