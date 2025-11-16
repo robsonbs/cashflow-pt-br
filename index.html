@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cashflow - Jogo Educativo Financeiro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Tela de Configuração -->
+    <div id="tela-configuracao" class="tela">
+        <div class="container-configuracao">
+            <h1>Cashflow - Jogo Educativo Financeiro</h1>
+            <p class="subtitulo">Aprenda sobre finanças pessoais e investimentos de forma divertida!</p>
+            
+            <div class="secao-config">
+                <h2>Configuração do Jogo</h2>
+                
+                <div class="campo-config">
+                    <label for="num-jogadores">Número de Jogadores:</label>
+                    <select id="num-jogadores">
+                        <option value="2">2 Jogadores</option>
+                        <option value="3">3 Jogadores</option>
+                        <option value="4" selected>4 Jogadores</option>
+                        <option value="5">5 Jogadores</option>
+                        <option value="6">6 Jogadores</option>
+                    </select>
+                </div>
+                
+                <div class="secao-profissoes">
+                    <h3>Selecione as Profissões</h3>
+                    
+                    <div class="grid-profissoes">
+                        <div class="jogador-profissao">
+                            <h4>Jogador 1</h4>
+                            <select id="profissao-jogador-1" class="profissao-select">
+                                <option value="enfermeiro">Enfermeiro</option>
+                                <option value="professor">Professor</option>
+                                <option value="secretario">Secretário</option>
+                                <option value="policial">Policial</option>
+                                <option value="engenheiro">Engenheiro</option>
+                                <option value="mecanico">Mecânico</option>
+                            </select>
+                        </div>
+                        
+                        <div class="jogador-profissao">
+                            <h4>Jogador 2</h4>
+                            <select id="profissao-jogador-2" class="profissao-select">
+                                <option value="enfermeiro">Enfermeiro</option>
+                                <option value="professor" selected>Professor</option>
+                                <option value="secretario">Secretário</option>
+                                <option value="policial">Policial</option>
+                                <option value="engenheiro">Engenheiro</option>
+                                <option value="mecanico">Mecânico</option>
+                            </select>
+                        </div>
+                        
+                        <div class="jogador-profissao">
+                            <h4>Jogador 3</h4>
+                            <select id="profissao-jogador-3" class="profissao-select">
+                                <option value="enfermeiro">Enfermeiro</option>
+                                <option value="professor">Professor</option>
+                                <option value="secretario" selected>Secretário</option>
+                                <option value="policial">Policial</option>
+                                <option value="engenheiro">Engenheiro</option>
+                                <option value="mecanico">Mecânico</option>
+                            </select>
+                        </div>
+                        
+                        <div class="jogador-profissao">
+                            <h4>Jogador 4</h4>
+                            <select id="profissao-jogador-4" class="profissao-select">
+                                <option value="enfermeiro">Enfermeiro</option>
+                                <option value="professor">Professor</option>
+                                <option value="secretario">Secretário</option>
+                                <option value="policial" selected>Policial</option>
+                                <option value="engenheiro">Engenheiro</option>
+                                <option value="mecanico">Mecânico</option>
+                            </select>
+                        </div>
+                        
+                        <div class="jogador-profissao">
+                            <h4>Jogador 5</h4>
+                            <select id="profissao-jogador-5" class="profissao-select">
+                                <option value="enfermeiro">Enfermeiro</option>
+                                <option value="professor">Professor</option>
+                                <option value="secretario">Secretário</option>
+                                <option value="policial">Policial</option>
+                                <option value="engenheiro" selected>Engenheiro</option>
+                                <option value="mecanico">Mecânico</option>
+                            </select>
+                        </div>
+                        
+                        <div class="jogador-profissao">
+                            <h4>Jogador 6</h4>
+                            <select id="profissao-jogador-6" class="profissao-select">
+                                <option value="enfermeiro">Enfermeiro</option>
+                                <option value="professor">Professor</option>
+                                <option value="secretario">Secretário</option>
+                                <option value="policial">Policial</option>
+                                <option value="engenheiro">Engenheiro</option>
+                                <option value="mecanico" selected>Mecânico</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <button id="btn-iniciar-jogo" class="btn-primary btn-large">Iniciar Jogo</button>
+            </div>
+            
+            <div class="secao-regras">
+                <h3>Como Jogar</h3>
+                <ul>
+                    <li><strong>Objetivo:</strong> Sair da "Corrida dos Ratos" aumentando sua renda passiva acima de suas despesas totais.</li>
+                    <li><strong>Turnos:</strong> Role os dados, mova seu token e siga as instruções do espaço.</li>
+                    <li><strong>Oportunidades:</strong> Compre ativos que geram fluxo de caixa positivo.</li>
+                    <li><strong>Mercado:</strong> Eventos que afetam seus investimentos.</li>
+                    <li><strong>Dia de Pagamento:</strong> Receba seu fluxo de caixa quando passar pelo início.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Tela do Jogo -->
+    <div id="tela-jogo" class="tela" style="display: none;">
+        <div class="container-jogo">
+            <!-- Cabeçalho com informações do jogador atual -->
+            <header class="header-jogo">
+                <div class="info-jogador-atual">
+                    <h2>Turno: <span id="jogador-nome">Jogador 1</span></h2>
+                    <p>Profissão: <span id="jogador-profissao">Enfermeiro</span></p>
+                </div>
+                <div class="acoes-rapidas">
+                    <button id="btn-rolar-dados" class="btn-primary">🎲 Rolar Dados</button>
+                    <div id="resultado-dado" class="resultado-dado"></div>
+                </div>
+            </header>
+            
+            <!-- Layout principal -->
+            <div class="layout-principal">
+                <!-- Painel Esquerdo - Informações Financeiras -->
+                <aside class="painel-info">
+                    <div class="card">
+                        <h3>Informações Financeiras</h3>
+                        
+                        <div class="info-financeira">
+                            <div class="info-item destaque">
+                                <span class="label">Dinheiro:</span>
+                                <span class="valor" id="info-dinheiro">R$ 0</span>
+                            </div>
+                            
+                            <div class="info-item">
+                                <span class="label">Salário:</span>
+                                <span class="valor" id="info-salario">R$ 0</span>
+                            </div>
+                            
+                            <div class="info-item destaque-positivo">
+                                <span class="label">Fluxo de Caixa:</span>
+                                <span class="valor" id="info-fluxo-caixa">R$ 0</span>
+                            </div>
+                            
+                            <div class="info-item destaque-negativo">
+                                <span class="label">Despesas Totais:</span>
+                                <span class="valor" id="info-despesas">R$ 0</span>
+                            </div>
+                            
+                            <div class="info-item">
+                                <span class="label">Passivos Totais:</span>
+                                <span class="valor" id="info-passivos">R$ 0</span>
+                            </div>
+                        </div>
+                        
+                        <div id="info-condicao-vitoria" class="info-vitoria" style="display: none;"></div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>Seus Ativos</h3>
+                        <div id="lista-ativos" class="lista-ativos">
+                            <p class="sem-ativos">Nenhum ativo ainda</p>
+                        </div>
+                    </div>
+                </aside>
+                
+                <!-- Área Central - Tabuleiro -->
+                <main class="area-tabuleiro">
+                    <div class="card-tabuleiro">
+                        <h3>Tabuleiro - Corrida dos Ratos</h3>
+                        <div id="tabuleiro" class="tabuleiro"></div>
+                    </div>
+                </main>
+                
+                <!-- Painel Direito - Histórico -->
+                <aside class="painel-historico">
+                    <div class="card">
+                        <h3>Histórico do Jogo</h3>
+                        <div id="historico" class="historico">
+                            <p class="mensagem-inicial">O jogo começou! Boa sorte a todos!</p>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal para Cartas -->
+    <div id="modal-carta" class="modal">
+        <div class="modal-content">
+            <h2 id="modal-carta-titulo">Carta</h2>
+            <div id="modal-carta-conteudo" class="modal-carta-conteudo"></div>
+            <div id="modal-carta-acoes" class="modal-acoes"></div>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="data.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
