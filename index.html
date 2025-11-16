@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CASHFLOW 101 - Jogo de Educação Financeira</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <!-- Header -->
+        <header>
+            <h1>CASHFLOW 101</h1>
+            <h2>Jogo de Educação Financeira</h2>
+        </header>
+
+        <!-- Player Setup Section -->
+        <div id="setup-section" class="section">
+            <h3>Configuração do Jogo</h3>
+            
+            <div class="setup-controls">
+                <label for="player-count">Número de Jogadores (1-6):</label>
+                <select id="player-count">
+                    <option value="1">1 Jogador</option>
+                    <option value="2" selected>2 Jogadores</option>
+                    <option value="3">3 Jogadores</option>
+                    <option value="4">4 Jogadores</option>
+                    <option value="5">5 Jogadores</option>
+                    <option value="6">6 Jogadores</option>
+                </select>
+            </div>
+
+            <div id="profession-selection">
+                <!-- Profession selection will be generated dynamically -->
+            </div>
+
+            <button id="start-game-btn" class="btn btn-primary">Iniciar Jogo</button>
+        </div>
+
+        <!-- Game Board Section -->
+        <div id="game-section" class="section hidden">
+            <div class="game-layout">
+                <!-- Left Panel: Game Board -->
+                <div class="board-container">
+                    <h3>Tabuleiro</h3>
+                    
+                    <!-- Fast Track -->
+                    <div id="fast-track" class="track">
+                        <div class="track-label">Pista Rápida</div>
+                        <div id="fast-track-spaces" class="spaces">
+                            <!-- Fast track spaces will be generated dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Rat Race -->
+                    <div id="rat-race" class="track">
+                        <div class="track-label">Corrida dos Ratos</div>
+                        <div id="rat-race-spaces" class="spaces">
+                            <!-- Rat race spaces will be generated dynamically -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Panel: Player Info & Controls -->
+                <div class="info-container">
+                    <!-- Current Player Info -->
+                    <div id="current-player-info">
+                        <h3>Jogador <span id="current-player-number">1</span> - <span id="current-player-name">Nome</span></h3>
+                        <p class="track-status">Localização: <span id="player-track-status">Corrida dos Ratos</span></p>
+                    </div>
+
+                    <!-- Financial Statement -->
+                    <div id="financial-statement" class="panel">
+                        <h4>Minha Ficha Financeira</h4>
+                        
+                        <div class="financial-section">
+                            <h5>Renda</h5>
+                            <div class="financial-row">
+                                <span class="label">Salário Mensal:</span>
+                                <span class="value" id="salary">R$ 0</span>
+                            </div>
+                            <div class="financial-row">
+                                <span class="label">Renda Passiva:</span>
+                                <span class="value" id="passive-income">R$ 0</span>
+                            </div>
+                            <div class="financial-row total">
+                                <span class="label">Renda Total:</span>
+                                <span class="value" id="total-income">R$ 0</span>
+                            </div>
+                        </div>
+
+                        <div class="financial-section">
+                            <h5>Despesas</h5>
+                            <div class="financial-row">
+                                <span class="label">Impostos:</span>
+                                <span class="value" id="taxes">R$ 0</span>
+                            </div>
+                            <div class="financial-row">
+                                <span class="label">Hipoteca:</span>
+                                <span class="value" id="housing">R$ 0</span>
+                            </div>
+                            <div class="financial-row">
+                                <span class="label">Empréstimo Carro:</span>
+                                <span class="value" id="car-loan">R$ 0</span>
+                            </div>
+                            <div class="financial-row">
+                                <span class="label">Empréstimo Estudantil:</span>
+                                <span class="value" id="student-loan">R$ 0</span>
+                            </div>
+                            <div class="financial-row">
+                                <span class="label">Cartão de Crédito:</span>
+                                <span class="value" id="credit-card">R$ 0</span>
+                            </div>
+                            <div class="financial-row">
+                                <span class="label">Outras Despesas:</span>
+                                <span class="value" id="other-expenses">R$ 0</span>
+                            </div>
+                            <div class="financial-row">
+                                <span class="label">Filhos (<span id="children-count">0</span>):</span>
+                                <span class="value" id="children-expenses">R$ 0</span>
+                            </div>
+                            <div class="financial-row">
+                                <span class="label">Empréstimo Banco:</span>
+                                <span class="value" id="bank-loan">R$ 0</span>
+                            </div>
+                            <div class="financial-row total">
+                                <span class="label">Despesas Totais:</span>
+                                <span class="value" id="total-expenses">R$ 0</span>
+                            </div>
+                        </div>
+
+                        <div class="financial-section cashflow">
+                            <div class="financial-row highlight">
+                                <span class="label">Fluxo de Caixa Mensal:</span>
+                                <span class="value" id="monthly-cashflow">R$ 0</span>
+                            </div>
+                            <div class="financial-row highlight">
+                                <span class="label">Dinheiro em Caixa:</span>
+                                <span class="value" id="cash">R$ 0</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Assets -->
+                    <div id="assets-section" class="panel">
+                        <h4>Meus Ativos</h4>
+                        <div id="assets-list" class="list">
+                            <p class="empty-message">Nenhum ativo ainda</p>
+                        </div>
+                    </div>
+
+                    <!-- Liabilities -->
+                    <div id="liabilities-section" class="panel">
+                        <h4>Meus Passivos</h4>
+                        <div id="liabilities-list" class="list">
+                            <p class="empty-message">Nenhum passivo ainda</p>
+                        </div>
+                    </div>
+
+                    <!-- Game Controls -->
+                    <div id="game-controls" class="panel">
+                        <button id="roll-dice-btn" class="btn btn-primary">Lançar Dados</button>
+                        <button id="next-turn-btn" class="btn btn-secondary hidden">Próximo Turno</button>
+                        <div id="dice-result" class="dice-result hidden">
+                            <span class="dice-label">Resultado:</span>
+                            <span id="dice-value" class="dice-value">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card Display Area -->
+            <div id="card-display" class="modal hidden">
+                <div class="modal-content">
+                    <h3 id="card-title">Título da Carta</h3>
+                    <p id="card-description">Descrição da carta</p>
+                    <div id="card-details"></div>
+                    <div id="card-actions" class="card-actions">
+                        <!-- Action buttons will be added dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game Log -->
+            <div id="game-log" class="panel">
+                <h4>Histórico do Jogo</h4>
+                <div id="log-messages" class="log-messages">
+                    <p>Bem-vindo ao CASHFLOW 101!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
